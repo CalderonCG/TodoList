@@ -13,16 +13,23 @@ function Filter({ name, options, value, handleChange }: FilterProps) {
 
   const handleSelection = (option: string) => {
     setShowMenu(false);
-    handleChange(option)
-  }
+    handleChange(option);
+  };
   return (
     <div className="filter">
+      <p className="filter_label">{name}: </p>
       <button className="filter_button" onClick={() => setShowMenu(!showMenu)}>
-        {name}
+        <p>{value}</p>
       </button>
       <div className={`filter_menu ${showMenu ? "display" : ""}`}>
         {options.map((option) => (
-          <button className={`${value === option ? 'selected':''}`} onClick={()=>handleSelection(option)} key={option}>{option}</button>
+          <button
+            className={`${value === option ? "selected" : ""}`}
+            onClick={() => handleSelection(option)}
+            key={option}
+          >
+            {option}
+          </button>
         ))}
       </div>
     </div>

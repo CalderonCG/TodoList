@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ActionType, TaskType } from "../../utils/TaskTypes";
 import Filter from "../Filter/Filter";
 import Task from "../Task/Task";
@@ -13,9 +13,19 @@ function List({ list, handleChanges }: ListProps) {
   const uncompleted = list.filter((task) => !task.completed);
   const [statusFilter, setStatusFilter] = useState("All");
   const [priorityFilter, setPriorityFilter] = useState("All");
-  const statusOptions = ["All", "Completed"];
+  const statusOptions = ["All", "Completed", "Pending"];
   const priorityOptions = ["All", "High", "Medium", "Low"];
   console.log(priorityFilter);
+
+  const filteredList = list.filter((task) => {
+    const statusCheck =
+      statusFilter === "All" ||
+      (statusFilter === "Completed" && task.completed) ||
+      (statusFilter === "Pending" && !task.completed);
+
+    const priorityCheck = priorityFilter === 'All' || priorityFilter === task.priority
+    return priorityCheck && statusCheck;
+  });
 
   return (
     <div className="todo_list">
@@ -24,7 +34,7 @@ function List({ list, handleChanges }: ListProps) {
       ) : (
         <>
           <div className="todo_list_tasks">
-            {list.map((task) => (
+            {filteredList.map((task) => (
               <Task task={task} key={task.id} handleToggle={handleChanges} />
             ))}
           </div>

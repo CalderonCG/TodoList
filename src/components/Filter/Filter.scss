@@ -5,8 +5,14 @@
   position: relative;
   background-color: v.$CardDark;
 
+
+
   button {
     width: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
     padding: 0.5rem 0rem;
     border-radius: 0.5rem;
     border: none;
@@ -15,7 +21,7 @@
       background-color: v.$HoverDark;
     }
 
-        &.selected {
+    &.selected {
       background-color: v.$HoverDark;
     }
   }
