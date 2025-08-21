@@ -1,22 +1,28 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import "./Form.scss";
 import { IoMdSend } from "react-icons/io";
+import type { TaskType } from "../../utils/TaskTypes";
+import { v4 as uuidv4 } from "uuid";
 
-type FormFields = {
-  task: string;
-  deadline: string;
-  priority: "High" | "Medium" | "Low";
+type FormProps = {
+  handleNewTask: React.Dispatch<React.SetStateAction<TaskType[]>>;
 };
 
-function Form() {
+function Form({ handleNewTask }: FormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormFields>();
+    reset,
+  } = useForm<TaskType>();
 
-  const onSubmit: SubmitHandler<FormFields> = (data) => {
+  const onSubmit: SubmitHandler<TaskType> = (data) => {
     console.log(data);
+    const newTask = { ...data, id: uuidv4(), completed: false };
+    handleNewTask((prev) => {
+      return [...prev, newTask];
+    });
+    reset();
   };
 
   return (
@@ -46,7 +52,9 @@ function Form() {
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
         </select>
-        <button ><IoMdSend className="submit"/></button>
+        <button>
+          <IoMdSend className="submit" />
+        </button>
       </form>
 
       {errors.deadline || errors.priority || errors.task ? (

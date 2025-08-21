@@ -6,6 +6,7 @@
   width: 100%;
   color: v.$FontDark;
   padding: 1.5rem 1.5rem;
+  border-radius: 0.5rem;
   gap: 1rem;
   border-top: 1px solid #2d2f44;
   border-bottom: 1px solid #2d2f44;
@@ -17,7 +18,7 @@
     border-radius: 1rem;
     background-color: inherit;
     border: 1px solid v.$FontDark;
-    
+
     &:hover {
       border: 1px solid v.$Check;
     }
