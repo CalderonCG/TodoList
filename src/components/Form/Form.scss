@@ -1,12 +1,23 @@
 @use "../../styles/mixins" as m;
 @use "../../styles/variables" as v;
 
+.form_container {
+  width: 100%;
+
+  p {
+    position: absolute;
+    color: white;
+    margin: 10px;
+  }
+}
 .form {
   width: 100%;
   display: flex;
   padding: 0.5rem 1rem;
   background-color: v.$CardDark;
   border-radius: 0.5rem;
+  align-items: center;
+  gap: 1rem;
 
   &_task {
     padding: 1rem 0rem;
@@ -24,7 +35,7 @@
   }
 
   &_deadline {
-    padding: 1rem;
+    padding: 1rem 0rem;
     background-color: inherit;
     border: none;
     color: v.$FontDark;
@@ -35,7 +46,7 @@
 
     &::-webkit-calendar-picker-indicator {
       cursor: pointer;
-      filter: invert(1); 
+      filter: invert(1);
       opacity: 0.7;
 
       &:hover {
@@ -48,8 +59,8 @@
     }
   }
 
-    &_select {
-    padding: 1rem;
+  &_select {
+    padding: 1rem 0rem;
     background-color: inherit;
     border: none;
     color: v.$FontDark;
@@ -60,6 +71,24 @@
 
     &:focus {
       border: none;
+    }
+  }
+
+  button {
+    @include m.flexCenter(row, center);
+    background-color: inherit;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: 0 0 auto;
+    border: none;
+
+    .submit {
+      color: v.$FontDark;
+      font-size: 1.5rem;
+
+      &:hover{
+        color: white;
+      }
     }
   }
 }
