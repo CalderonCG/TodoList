@@ -9,7 +9,7 @@ type TaskProps = {
 
 function Task({ task, handleToggle }: TaskProps) {
   return (
-    <div className="task ">
+    <div className={`task ${task.completed? 'checked_text':''}`}>
       <button className={`task_check ${task.completed? 'checked':''}`} onClick={()=>handleToggle({type:'toggle' , value:task.id})}>
         {task.completed && <FaCheck/>}
       </button>

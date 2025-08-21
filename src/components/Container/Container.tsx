@@ -12,6 +12,8 @@ const listReducer = (state: TaskType[], action: ActionType): TaskType[] =>{
       return [...state, action.value]
     case 'toggle':
       return state.map((task) => task.id === action.value ? {...task, completed: !task.completed} : task)
+    case 'clear':
+      return state.filter((task) => task.completed !== true)
     default:
       return state
   }
@@ -28,7 +30,7 @@ function Container() {
         <MdSunny className="todo_container_icon" />
       </div>
       <Form handleNewTask={dispatch} />
-      <List list={list} handleToggle={dispatch}/>
+      <List list={list} handleChanges={dispatch}/>
     </div>
   );
 }

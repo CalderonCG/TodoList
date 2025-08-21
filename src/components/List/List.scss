@@ -57,5 +57,19 @@
         font-weight: 600;
       }
     }
+
+    &_clear{
+              background-color: inherit;
+        width: 7rem;
+        padding: 0.5rem 0;
+        border: none;
+        border-radius: 0.25rem;
+        color: v.$FontDark;
+        font-weight: 600;
+
+        &:hover{
+          background-color: #3c3f62;
+        }
+    }
   }
 }

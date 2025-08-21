@@ -5,10 +5,10 @@ import "./List.scss";
 
 type ListProps = {
   list: TaskType[],
-  handleToggle: React.ActionDispatch<[action: ActionType]>
+  handleChanges: React.ActionDispatch<[action: ActionType]>
 }
 
-function List({ list, handleToggle }: ListProps) {
+function List({ list, handleChanges }: ListProps) {
   const uncompleted = list.filter((task) => !task.completed)
   return (
     <div className="todo_list">
@@ -18,7 +18,7 @@ function List({ list, handleToggle }: ListProps) {
         <>
           <div className="todo_list_tasks">
             {list.map((task) => (
-              <Task task={task} key={task.id} handleToggle={handleToggle}/>
+              <Task task={task} key={task.id} handleToggle={handleChanges}/>
             ))}
           </div>
 
@@ -29,7 +29,7 @@ function List({ list, handleToggle }: ListProps) {
               <button>Active</button>
               <button>Completed</button>
             </div>
-            <p>Clear Completed</p>
+            <button className="todo_list_options_clear" onClick={()=>handleChanges({type:'clear'})}>Clear Completed</button>
           </div>
         </>
       )}

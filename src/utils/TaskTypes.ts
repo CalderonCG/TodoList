@@ -7,4 +7,4 @@ export type TaskType = {
 };
 
 
-export type ActionType = {type: 'toggle', value: string} | {type: 'add', value: TaskType} 
+export type ActionType = {type: 'toggle', value: string} | {type: 'add', value: TaskType}  | {type: 'clear'}
