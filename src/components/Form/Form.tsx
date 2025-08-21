@@ -1,6 +1,7 @@
-import './ToDoForm.scss'
+import './Form.scss'
 
-function ToDoForm() {
+
+function Form() {
   return (
     <div className='form'>
         <input className='form_task' placeholder='Write your task here' type="text" />
@@ -15,4 +16,4 @@ function ToDoForm() {
   )
 }
 
-export default ToDoForm
+export default Form
