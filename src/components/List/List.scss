@@ -45,9 +45,7 @@
 
     &_filters {
       display: flex;
-      gap: 1px;
-
-      border-top: 1px solid #2d2f44;
+      gap: 0.5rem;
 
       button {
         background-color: inherit;
@@ -68,7 +66,7 @@
         font-weight: 600;
 
         &:hover{
-          background-color: #3c3f62;
+          background-color: v.$HoverDark;
         }
     }
   }
