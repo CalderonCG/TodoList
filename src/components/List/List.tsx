@@ -1,8 +1,14 @@
-import type { TaskType } from "../../utils/TaskTypes";
+
+import type { ActionType, TaskType } from "../../utils/TaskTypes";
 import Task from "../Task/Task";
 import "./List.scss";
 
-function List({ list }: { list: TaskType[] }) {
+type ListProps = {
+  list: TaskType[],
+  handleToggle: React.ActionDispatch<[action: ActionType]>
+}
+
+function List({ list, handleToggle }: ListProps) {
   const uncompleted = list.filter((task) => !task.completed)
   return (
     <div className="todo_list">
@@ -12,7 +18,7 @@ function List({ list }: { list: TaskType[] }) {
         <>
           <div className="todo_list_tasks">
             {list.map((task) => (
-              <Task task={task} key={task.id}/>
+              <Task task={task} key={task.id} handleToggle={handleToggle}/>
             ))}
           </div>
 

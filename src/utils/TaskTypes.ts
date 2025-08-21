@@ -5,3 +5,6 @@ export type TaskType = {
   priority: "High" | "Medium" | "Low";
   completed: boolean;
 };
+
+
+export type ActionType = {type: 'toggle', value: string} | {type: 'add', value: TaskType} 

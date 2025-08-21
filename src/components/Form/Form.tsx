@@ -1,11 +1,12 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import "./Form.scss";
 import { IoMdSend } from "react-icons/io";
-import type { TaskType } from "../../utils/TaskTypes";
+import type { ActionType, TaskType } from "../../utils/TaskTypes";
 import { v4 as uuidv4 } from "uuid";
 
+
 type FormProps = {
-  handleNewTask: React.Dispatch<React.SetStateAction<TaskType[]>>;
+  handleNewTask:  React.ActionDispatch<[action: ActionType]>
 };
 
 function Form({ handleNewTask }: FormProps) {
@@ -19,9 +20,7 @@ function Form({ handleNewTask }: FormProps) {
   const onSubmit: SubmitHandler<TaskType> = (data) => {
     console.log(data);
     const newTask = { ...data, id: uuidv4(), completed: false };
-    handleNewTask((prev) => {
-      return [...prev, newTask];
-    });
+    handleNewTask({type: 'add', value: newTask});
     reset();
   };
 

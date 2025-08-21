@@ -12,12 +12,15 @@
   border-bottom: 1px solid #2d2f44;
 
   &_check {
+    @include m.flexCenter(row,center);
     flex: 0 0 auto;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 1rem;
     background-color: inherit;
     border: 1px solid v.$FontDark;
+    color: v.$BackgroundDark;
+
 
     &:hover {
       border: 1px solid v.$Check;
@@ -27,4 +30,10 @@
   &_task {
     flex: 1 1 auto;
   }
+
+}
+
+.checked{
+  background-color: v.$Check;
+
 }
