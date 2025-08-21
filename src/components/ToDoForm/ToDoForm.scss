@@ -1,0 +1,65 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as v;
+
+.form {
+  width: 100%;
+  display: flex;
+  padding: 0.5rem 1rem;
+  background-color: v.$CardDark;
+  border-radius: 0.5rem;
+
+  &_task {
+    padding: 1rem 0rem;
+    background-color: inherit;
+    border: none;
+    color: v.$FontDark;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    flex: 1 1 auto;
+
+    &:focus {
+      border: none;
+    }
+  }
+
+  &_deadline {
+    padding: 1rem;
+    background-color: inherit;
+    border: none;
+    color: v.$FontDark;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    flex: 0 0 auto;
+
+    &::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      filter: invert(1); 
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &:focus {
+      border: none;
+    }
+  }
+
+    &_select {
+    padding: 1rem;
+    background-color: inherit;
+    border: none;
+    color: v.$FontDark;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    flex: 0 0 auto;
+
+    &:focus {
+      border: none;
+    }
+  }
+}
