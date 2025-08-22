@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./Filter.scss";
+import clsx from "clsx";
 
 type FilterProps = {
   name: string;
@@ -36,10 +37,10 @@ function Filter({ name, options, value, handleChange }: FilterProps) {
       <button className="filter_button" onClick={() => setShowMenu(!showMenu)}>
         <p>{value}</p>
       </button>
-      <div className={`filter_menu ${showMenu ? "display" : ""}`}>
+      <div className={clsx("filter_menu", {display: showMenu})}>
         {options.map((option) => (
           <button
-            className={`${value === option ? "selected" : ""}`}
+            className={clsx({selected: value === option})}
             onClick={() => handleSelection(option)}
             key={option}
           >

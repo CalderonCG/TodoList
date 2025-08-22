@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./Sorter.scss";
+import clsx from "clsx";
 
 type SorterProps = {
   value: string;
@@ -39,27 +40,29 @@ function Sorter({ value, handleChange }: SorterProps) {
       <button className="sorter_button" onClick={() => setShowMenu(!showMenu)}>
         <p>{value}</p>
       </button>
-      <div className={`sorter_menu ${showMenu ? "display" : ""}`}>
+      <div className={clsx('sorter_menu',{display: showMenu})}>
         <button
           className={`${value === "Added" ? "selected" : ""} `}
           onClick={() => handleSelection("Added")}
         >
           Added
         </button>
+        
+      {/* `${value === "Priority" ? "selected" : ""} ` */}
         <button
-          className={`${value === "Priority" ? "selected" : ""} `}
+          className={clsx({selected: value === 'Priority'})}
           onClick={() => handleSelection("Priority")}
         >
           Priority
         </button>
         <button
-          className={`${value === "Status" ? "selected" : ""} `}
+          className={clsx({selected: value === 'Status'})}
           onClick={() => handleSelection("Status")}
         >
           Status
         </button>
         <button
-          className={`${value === "Deadline" ? "selected" : ""} `}
+          className={clsx({selected: value === 'Deadline'})}
           onClick={() => handleSelection("Deadline")}
         >
           Deadline

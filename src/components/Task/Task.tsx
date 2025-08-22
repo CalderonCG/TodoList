@@ -1,6 +1,7 @@
 import { FaCheck } from "react-icons/fa";
 import type { ActionType, TaskType } from "../../utils/TaskTypes";
 import "./Task.scss";
+import clsx from "clsx";
 
 type TaskProps = {
   task: TaskType;
@@ -9,8 +10,10 @@ type TaskProps = {
 
 function Task({ task, handleToggle }: TaskProps) {
   return (
-    <div className={`task ${task.completed? 'checked_text':''}`}>
-      <button className={`task_check ${task.completed? 'checked':''}`} onClick={()=>handleToggle({type:'toggle' , value:task.id})}>
+    <div className={clsx('task', {checked_text : task.completed })}>
+      {/* {`task_check ${task.completed? 'checked':''}`} onClick={()=>handleToggle({type:'toggle' , value:task.id})} */}
+      <button className={clsx('task_check', {checked: task.completed})}
+       onClick={()=>handleToggle({type:'toggle' , value:task.id})}>
         {task.completed && <FaCheck/>}
       </button>
       <p className="task_task">{task.task}</p>
