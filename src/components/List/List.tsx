@@ -1,32 +1,46 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { ActionType, TaskType } from "../../utils/TaskTypes";
 import Filter from "../Filter/Filter";
 import Task from "../Task/Task";
 import "./List.scss";
+import Sorter from "../Sorter/Sorter";
+import { sortList } from "../../utils/Sorting";
 
+//Types---------------------------------------------------------
 type ListProps = {
   list: TaskType[];
   handleChanges: React.ActionDispatch<[action: ActionType]>;
 };
 
 function List({ list, handleChanges }: ListProps) {
-  const uncompleted = list.filter((task) => !task.completed);
-  const [statusFilter, setStatusFilter] = useState("All");
-  const [priorityFilter, setPriorityFilter] = useState("All");
-  const statusOptions = ["All", "Completed", "Pending"];
-  const priorityOptions = ["All", "High", "Medium", "Low"];
-  console.log(priorityFilter);
+  //States and consts-----------------------------------------------------------
+  const uncompleted = list.filter((task) => !task.completed); //List of uncompleted tasks
+  const [sorter, setSorter] = useState<'Added'|'Priority'|'Status'|'Deadline'>("Added"); //Selected sort option
+  const [statusFilter, setStatusFilter] = useState("All");//Selected status filter
+  const [priorityFilter, setPriorityFilter] = useState("All");//Selected priority filter
+  const statusOptions = ["All", "Completed", "Pending"];//Possible status filter options
+  const priorityOptions = ["All", "High", "Medium", "Low"];//Possible priority filter options
 
+
+  //Applying filters-------------------------
   const filteredList = list.filter((task) => {
+    //Checking the status
     const statusCheck =
       statusFilter === "All" ||
       (statusFilter === "Completed" && task.completed) ||
       (statusFilter === "Pending" && !task.completed);
 
-    const priorityCheck = priorityFilter === 'All' || priorityFilter === task.priority
+    //Checking hte priority
+    const priorityCheck =
+      priorityFilter === "All" || priorityFilter === task.priority;
     return priorityCheck && statusCheck;
   });
 
+  //Applying sorting to the filteres list------------------------
+  const sortedList =  sortList({filter:sorter, list: filteredList})
+
+
+  //Component--------------------------------------------------------------------------------------
   return (
     <div className="todo_list">
       {list.length === 0 ? (
@@ -34,7 +48,7 @@ function List({ list, handleChanges }: ListProps) {
       ) : (
         <>
           <div className="todo_list_tasks">
-            {filteredList.map((task) => (
+            {sortedList.map((task) => (
               <Task task={task} key={task.id} handleToggle={handleChanges} />
             ))}
           </div>
@@ -54,6 +68,7 @@ function List({ list, handleChanges }: ListProps) {
                 options={priorityOptions}
                 handleChange={setPriorityFilter}
               />
+              <Sorter value={sorter} handleChange={setSorter} />
             </div>
             <button
               className="todo_list_options_clear"
