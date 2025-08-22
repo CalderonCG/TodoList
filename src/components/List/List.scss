@@ -4,7 +4,7 @@
 .todo_list {
   @include m.flexCenter(column, start);
   width: 100%;
-  max-height: 70%;
+  max-height: 65%;
   background-color: v.$CardDark;
   border-radius: 0.5rem;
 
