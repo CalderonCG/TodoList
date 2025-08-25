@@ -1,0 +1,57 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as v;
+
+.task {
+  @include m.flexCenter(row, start);
+  width: 100%;
+  color: v.$FontDark;
+  padding: 1.5rem 1.5rem;
+  border-radius: 0.5rem;
+  gap: 1rem;
+  border-top: 1px solid #2d2f44;
+  border-bottom: 1px solid #2d2f44;
+
+  &_check {
+    @include m.flexCenter(row,center);
+    flex: 0 0 auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: inherit;
+    border: 1px solid v.$FontDark;
+    color: v.$BackgroundDark;
+
+
+    &:hover {
+      border: 1px solid v.$Check;
+    }
+  }
+
+  &_task {
+    flex: 1 1 auto;
+  }
+
+}
+
+.checked{
+  background-color: v.$Check;
+}
+
+.checked_text{
+  
+  color: v.$FontDark;
+  text-decoration: line-through;
+}
+
+
+.high{
+  color: rgb(141, 73, 73)
+}
+
+.medium{
+  color: rgb(125, 115, 73)
+}
+
+.low{
+  color: rgb(38, 125, 73)
+}

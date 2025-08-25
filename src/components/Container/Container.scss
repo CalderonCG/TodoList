@@ -4,9 +4,14 @@
 .todo_container {
   @include m.flexCenter(column, start);
   z-index: 100;
-  width: 40rem;
-  gap: 3rem;
-  height: 80%;
+  width: 50rem;
+  gap: 2rem;
+  height: 90%;
+
+    @media (max-width: 860px) {
+    width: 100%;
+    padding: 0 0.2rem;
+  }
 
   h1 {
     color: white;

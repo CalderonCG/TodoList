@@ -1,0 +1,67 @@
+@use "../../styles/mixins" as m;
+@use "../../styles/variables" as v;
+
+.modal {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: v.$CardDark;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  color: white;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 100;
+
+  &_title {
+    letter-spacing: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  &_filter_title {
+    font-size: 1.2rem;
+  }
+
+  &_filter_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  &_filter_button {
+    padding: 0.2rem 1rem;
+    border: 1px solid v.$FontDark;
+    background: inherit;
+    color: v.$FontDark;
+    border-radius: 0.25rem;
+  }
+
+
+  &_apply {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    border: 1px solid v.$FontDark;
+    background: v.$FontDark;
+    color: v.$CardDark;
+    border-radius: 0.25rem;
+    font-weight: 600;
+  }
+}
+
+.background_modal {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 50%;
+  z-index: 100;
+}
+.active{
+  
+    background: v.$FontDark;
+    color: v.$CardDark;
+    font-weight: 600;
+}
