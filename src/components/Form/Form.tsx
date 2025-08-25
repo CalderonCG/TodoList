@@ -35,6 +35,8 @@ function Form({ handleNewTask }: FormProps) {
           placeholder="Write your task here"
           type="text"
         />
+
+        <div className="form_secondary">
         <input
           {...register("deadline", { required: true })}
           type="date"
@@ -51,9 +53,12 @@ function Form({ handleNewTask }: FormProps) {
           <option value="Medium">Medium</option>
           <option value="Low">Low</option>
         </select>
-        <button>
+                <button>
           <IoMdSend className="submit" />
         </button>
+        </div>
+
+
       </form>
 
       {errors.deadline || errors.priority || errors.task ? (

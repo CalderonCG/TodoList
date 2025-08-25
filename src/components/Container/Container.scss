@@ -8,6 +8,11 @@
   gap: 2rem;
   height: 90%;
 
+    @media (max-width: 860px) {
+    width: 100%;
+    padding: 0 0.2rem;
+  }
+
   h1 {
     color: white;
     letter-spacing: 10px;

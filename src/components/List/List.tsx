@@ -5,6 +5,7 @@ import Task from "../Task/Task";
 import "./List.scss";
 import Sorter from "../Sorter/Sorter";
 import { sortList } from "../../utils/Sorting";
+import Modal from "../Modal/Modal";
 
 //Types---------------------------------------------------------
 type ListProps = {
@@ -20,6 +21,7 @@ function List({ list, handleChanges }: ListProps) {
   const [priorityFilter, setPriorityFilter] = useState("All");//Selected priority filter
   const statusOptions = ["All", "Completed", "Pending"];//Possible status filter options
   const priorityOptions = ["All", "High", "Medium", "Low"];//Possible priority filter options
+  const [showModal, setShowModal] = useState(false);
 
 
   //Applying filters-------------------------
@@ -70,6 +72,7 @@ function List({ list, handleChanges }: ListProps) {
               />
               <Sorter value={sorter} handleChange={setSorter} />
             </div>
+            <button className="todo_list_options_button" onClick={()=>setShowModal(true)}>Options</button>
             <button
               className="todo_list_options_clear"
               onClick={() => handleChanges({ type: "clear" })}
@@ -77,6 +80,7 @@ function List({ list, handleChanges }: ListProps) {
               Clear Completed
             </button>
           </div>
+          <Modal show={showModal} handleClick={setShowModal}/>
         </>
       )}
     </div>

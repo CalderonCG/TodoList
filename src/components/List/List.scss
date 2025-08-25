@@ -38,6 +38,19 @@
     justify-content: space-between;
     padding: 1.5rem 1.5rem;
 
+    &_button {
+      background-color: inherit;
+      width: 4.5rem;
+      border: none;
+      color: v.$FontDark;
+      font-weight: 600;
+      display: none;
+
+      @media(max-width: 860px){
+        display: flex;
+      }
+    }
+
     p {
       width: 6.5rem;
       font-size: 0.8rem;
@@ -46,6 +59,9 @@
     &_filters {
       display: flex;
       gap: 0.5rem;
+      @media (max-width: 860px) {
+        display: none;
+      }
 
       button {
         background-color: inherit;
@@ -56,18 +72,18 @@
       }
     }
 
-    &_clear{
-              background-color: inherit;
-        width: 7rem;
-        padding: 0.5rem 0;
-        border: none;
-        border-radius: 0.25rem;
-        color: v.$FontDark;
-        font-weight: 600;
+    &_clear {
+      background-color: inherit;
+      width: 7rem;
+      padding: 0.5rem 0;
+      border: none;
+      border-radius: 0.25rem;
+      color: v.$FontDark;
+      font-weight: 600;
 
-        &:hover{
-          background-color: v.$HoverDark;
-        }
+      &:hover {
+        background-color: v.$HoverDark;
+      }
     }
   }
 }
