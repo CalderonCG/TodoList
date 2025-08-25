@@ -80,7 +80,10 @@ function List({ list, handleChanges }: ListProps) {
               Clear Completed
             </button>
           </div>
-          <Modal show={showModal} handleClick={setShowModal}/>
+          <Modal show={showModal} handleClick={setShowModal}
+          sorter={sorter} handleSort={setSorter}
+          status={statusFilter} handleStatus={setStatusFilter}
+          priority={priorityFilter} handlePriority={setPriorityFilter}/>
         </>
       )}
     </div>
